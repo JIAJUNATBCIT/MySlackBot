@@ -13,7 +13,7 @@ slackInteractions.action({ type: 'select' }, (payload, respond) => {
 
 function respondToSelectDropdown(payload, respond) {
   const selectedOption = payload.actions[0].selected_options[0].value
-  console.log("######selectedOption: " + selectedOption);
+  console.log("######payload.callback_id: " + payload.callback_id);
 
   if (payload.callback_id == 'questions') {
     switch (selectedOption) {
