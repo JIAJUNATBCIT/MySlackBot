@@ -1,9 +1,9 @@
 {
-    "text": "Hello! What subject would you like to learn more about?",
+    "text": "Hello! I am Alice's virtual assistant, as you may know, Alice is on maternity leave till April.30, here're some questions that I may assist you with",
     "fallback": "Upgrade your Slack client to use messages like these.",
     "color": "#3AA3E3",
     "attachment_type": "default",
-    "callback_id": "questions",
+    "callback_id": "menu",
     "actions": [
       {
         "name": "subject_list",
@@ -11,20 +11,12 @@
         "type": "select",
         "options": [
           {
-            "text": "Reply with plain text",
+            "text": "Q1: Reply me with plain text",
             "value": "q1"
           },
           {
-            "text": "Reply with a link",
+            "text": "Q2: Reply me with a link",
             "value": "q2"
-          },
-          {
-            "text": "Question 3",
-            "value": "q3"
-          },
-          {
-            "text": "Question 4",
-            "value": "q4"
           }
         ]
       }
