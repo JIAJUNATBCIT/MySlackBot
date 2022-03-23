@@ -11,11 +11,11 @@
         "type": "select",
         "options": [
           {
-            "text": "Question 1",
+            "text": "Reply with plain text",
             "value": "q1"
           },
           {
-            "text": "Question 2",
+            "text": "Reply with a link",
             "value": "q2"
           },
           {
