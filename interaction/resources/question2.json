@@ -3,7 +3,7 @@
       "type": "section",
       "text": {
           "type": "mrkdwn",
-          "text": "I found this checklist from our confluence: <https://gscloudsolutions.atlassian.net/wiki/spaces/GM/pages/1980825672/Discovery+Build+-+Checklist+for+Functional+Leads|article>: on how to become a Function Lead !"
+          "text": "I found this <https://gscloudsolutions.atlassian.net/wiki/spaces/GM/pages/1980825672/Discovery+Build+-+Checklist+for+Functional+Leads|checklist> from our confluence on how to become a Function Lead !"
       }
     }
   ]

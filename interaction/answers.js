@@ -1,7 +1,8 @@
 const { createMessageAdapter } = require('@slack/interactive-messages')
 const slackSigningSecret = process.env.SLACK_SIGNING_SECRET
 const slackInteractions = createMessageAdapter(slackSigningSecret)
-const q2_attachments = require('./resources/question2.json')
+const q1 = require('./resources/question1.json')
+const q2 = require('./resources/question2.json')
 
 module.exports.listenForInteractions = function (app) {
   app.use('/interactions', slackInteractions.requestListener())
@@ -17,10 +18,9 @@ function respondToSelectDropdown(payload, respond) {
   if (payload.callback_id == 'questions') {
     switch (selectedOption) {
         case 'q1':
-            text = 'Reply your question by plain text.'
+            respondToQ1withPlainText(respond)
             break
         case 'q2':
-            text = 'You selected question 2.'
             respondToQ2withAttachment(respond)
             break
     }
@@ -29,9 +29,16 @@ function respondToSelectDropdown(payload, respond) {
   return { text: 'Processing...' }
 }
 
+function respondToQ1withPlainText(respond) {
+    respond({
+        blocks: q1,
+        replace_original: true
+    })
+}
+
 function respondToQ2withAttachment(respond) {
     respond({
-        blocks: q2_attachments,
+        blocks: q2,
         replace_original: true
     })
 }
