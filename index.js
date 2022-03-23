@@ -9,6 +9,9 @@ const app = express()
 const events = require('./events')
 events.listenForEvents(app)
 
+const interactions = require('./interaction/answers')
+interactions.listenForInteractions(app)
+
 app.listen(port, function () {
   console.log(`Listening on ${port}`)
 })

@@ -11,20 +11,20 @@
         "type": "select",
         "options": [
           {
-            "text": "Anti Racism",
-            "value": "anti_racism"
+            "text": "Question 1",
+            "value": "q1"
           },
           {
-            "text": "Anti Sexism",
-            "value": "anti_sexism"
+            "text": "Question 2",
+            "value": "q2"
           },
           {
-            "text": "LGBTQ+ Allyship",
-            "value": "lgbtq_allyship"
+            "text": "Question 3",
+            "value": "q3"
           },
           {
-            "text": "Autism allyship",
-            "value": "autism_allyship"
+            "text": "Question 4",
+            "value": "q4"
           }
         ]
       }
