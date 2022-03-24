@@ -13,14 +13,14 @@ function listenForEvents(app) {
   slackEvents.on('app_mention', (event) => {
     console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an app_mention event from user ${event.user} in channel ${event.channel}`)
-    respondToAppMention(event.channel)
+    respondToEvent(event.channel)
   })
 
   slackEvents.on('message', (payload) => {
     console.log(JSON.parse(JSON.stringify(payload.event)))
     console.log(`Received an message event from user ${payload.event.user} in channel ${payload.event.channel}`)
     if (payload.event.text.includes('Alice') && !payload.authorizations.is_bot ) {
-      respondToAppMention(payload.event.channel)
+      respondToEvent(payload.event.channel)
     }
   })
 
@@ -30,7 +30,7 @@ function listenForEvents(app) {
   })
 }
 
-async function respondToAppMention(channelId) {
+async function respondToEvent(channelId) {
   try {
     await web.chat.postMessage({
       channel: channelId,
