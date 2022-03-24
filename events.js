@@ -11,7 +11,7 @@ function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
   slackEvents.on('message', (event) => {
-    console.log(JSON.parse(JSON.stringify(event)))
+    //console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
       respondToEvent(event.channel)
@@ -28,7 +28,7 @@ async function respondToEvent(channelId) {
   try {
     await web.chat.postMessage({
       channel: channelId,
-      text: '',
+      text: 'AUTO-REPLY',
       attachments: [subjects]
     })
     console.log('Message posted!')
