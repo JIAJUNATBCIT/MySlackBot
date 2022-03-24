@@ -28,7 +28,6 @@ async function respondToEvent(channelId) {
   try {
     await web.chat.postMessage({
       channel: channelId,
-      text: 'AUTO-REPLY',
       attachments: [subjects]
     })
     console.log('Message posted!')
