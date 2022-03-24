@@ -10,10 +10,18 @@ const subjects = require('./interaction/menu.json')
 function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
-  slackEvents.on('message', (event) => {
+  slackEvents.on('app_mention', (event) => {
     console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an app_mention event from user ${event.user} in channel ${event.channel}`)
-    respondToEvent(event.channel)
+    respondToAppMention(event.channel)
+  })
+
+  slackEvents.on('message', (payload) => {
+    console.log(JSON.parse(JSON.stringify(payload.event)))
+    console.log(`Received an message event from user ${payload.event.user} in channel ${payload.event.channel}`)
+    if (payload.event.text.includes('Alice') && !payload.authorizations.is_bot ) {
+      respondToEvent(payload.event.channel)
+    }
   })
 
   // All errors in listeners are caught here. If this weren't caught, the program would terminate.
@@ -22,7 +30,7 @@ function listenForEvents(app) {
   })
 }
 
-async function respondToEvent(channelId) {
+async function respondToAppMention(channelId) {
   try {
     await web.chat.postMessage({
       channel: channelId,
