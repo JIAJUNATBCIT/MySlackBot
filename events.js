@@ -16,11 +16,11 @@ function listenForEvents(app) {
     respondToEvent(event.channel)
   })
 
-  slackEvents.on('message', (payload) => {
-    console.log(JSON.parse(JSON.stringify(payload.event)))
-    console.log(`Received an message event from user ${payload.event.user} in channel ${payload.event.channel}`)
-    if (payload.event.text.includes('Alice') && !payload.authorizations.is_bot ) {
-      respondToEvent(payload.event.channel)
+  slackEvents.on('message', (event, authorizations) => {
+    console.log(JSON.parse(JSON.stringify(event)))
+    console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
+    if (event.text.includes('Alice') && !authorizations.is_bot ) {
+      respondToEvent(event.channel)
     }
   })
 
