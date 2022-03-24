@@ -10,16 +10,10 @@ const subjects = require('./interaction/menu.json')
 function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
-  slackEvents.on('app_mention', (event) => {
-    console.log(JSON.parse(JSON.stringify(event)))
-    console.log(`Received an app_mention event from user ${event.user} in channel ${event.channel}`)
-    respondToEvent(event.channel)
-  })
-
   slackEvents.on('message', (event, authorizations) => {
     console.log(JSON.parse(JSON.stringify(authorizations)))
     console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
-    if (event.text.includes('Alice') && !authorizations.is_bot ) {
+    if (event.text.includes('@Alice') ) {
       respondToEvent(event.channel)
     }
   })
