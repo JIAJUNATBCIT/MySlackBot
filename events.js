@@ -10,8 +10,8 @@ const subjects = require('./interaction/menu.json')
 function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
-  slackEvents.on('message', ({event, client}) => {
-    console.log(JSON.parse(JSON.stringify(client)))
+  slackEvents.on('message', (event) => {
+    console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
     if (event.text.includes('@Alice') ) {
       respondToEvent(event.channel)
