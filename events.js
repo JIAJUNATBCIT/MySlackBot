@@ -13,7 +13,7 @@ function listenForEvents(app) {
   slackEvents.on('message', (event) => {
     console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
-    if (event.text.includes('@Alice') ) {
+    if (!event.subtype && !event.bot_id) {
       respondToEvent(event.channel)
     }
   })
