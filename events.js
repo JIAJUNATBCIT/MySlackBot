@@ -10,7 +10,8 @@ const subjects = require('./interaction/menu.json')
 function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
-  slackEvents.on('app_mention', (event) => {
+  slackEvents.on('message.channels', (event) => {
+    console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an app_mention event from user ${event.user} in channel ${event.channel}`)
     respondToEvent(event.channel)
   })
