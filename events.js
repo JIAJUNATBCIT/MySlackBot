@@ -36,7 +36,7 @@ async function respondToMessage(event) {
     switch(event.text) {
         case ':Alice:':
           await web.chat.postMessage({
-            channel: event.channelId,
+            channel: event.channel,
             text: "Hello @"+event.user+"! What can I help you today ?"
           })
           console.log('Message posted!')
@@ -52,7 +52,7 @@ async function respondToMessage(event) {
 async function respondToMention(event) {
   try {
     await web.chat.postMessage({
-      channel: event.channelId,
+      channel: event.channel,
       text: "Hello @"+event.user+"! I am Alice's virtual assistant, as you may know, Alice is on maternity leave till April.30, here're some questions that I may assist you with",
       attachments: [subjects]
     })
