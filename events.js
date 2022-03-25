@@ -11,15 +11,15 @@ function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
   slackEvents.on('app_mention', (event) => {
-    console.log(`Received an mention event from user ${event.user} in channel ${event.channel}`)
+    //console.log(`Received an mention event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
       respondToMention(event)
     }
   })
 
   slackEvents.on('message', (event) => {
-    console.log(JSON.parse(JSON.stringify(event)))
-    console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
+    //console.log(JSON.parse(JSON.stringify(event)))
+    //console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
       respondToMessage(event)
     }
@@ -37,9 +37,9 @@ async function respondToMessage(event) {
         case ':Alice:':
           await web.chat.postMessage({
             channel: event.channel,
-            text: `Hello <@${event.user}>! What can I help you today ?`
+            text: `Hello <${event.user}>! What can I help you today ?`
           })
-          console.log('Message posted!')
+          //console.log('Message posted!')
           break
         default: // no default as we don't want the app to respond all messages in the channel
           break
@@ -56,7 +56,7 @@ async function respondToMention(event) {
       text: `Hello <@${event.user}>! I am Alice's virtual assistant, as you may know, Alice is on maternity leave till April.30, here're some questions that I may assist you with`,
       attachments: [subjects]
     })
-    console.log('Message posted!')
+    //console.log('Message posted!')
   } catch (error) {
     console.log(error)
   }
