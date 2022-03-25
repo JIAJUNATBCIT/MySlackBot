@@ -13,7 +13,7 @@ function listenForEvents(app) {
   slackEvents.on('app_mention', (event) => {
     console.log(`Received an mention event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
-      respondToMention(event.channel)
+      respondToMention(event)
     }
   })
 
@@ -21,7 +21,7 @@ function listenForEvents(app) {
     console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
-      respondToMessage(event.channel, event.text)
+      respondToMessage(event)
     }
   })
 
@@ -31,13 +31,13 @@ function listenForEvents(app) {
   })
 }
 
-async function respondToMessage(channelId, bot_trigger) {
+async function respondToMessage(event) {
   try {
-    switch(bot_trigger) {
+    switch(event.text) {
         case ':Alice:':
           await web.chat.postMessage({
-            channel: channelId,
-            text: ' '
+            channel: event.channelId,
+            text: "Hello @"+event.user+"! What can I help you today ?"
           })
           console.log('Message posted!')
           break
@@ -49,11 +49,11 @@ async function respondToMessage(channelId, bot_trigger) {
   }
 }
 
-async function respondToMention(channelId) {
+async function respondToMention(event) {
   try {
     await web.chat.postMessage({
-      channel: channelId,
-      text: ' ',
+      channel: event.channelId,
+      text: "Hello @"+event.user+"! I am Alice's virtual assistant, as you may know, Alice is on maternity leave till April.30, here're some questions that I may assist you with",
       attachments: [subjects]
     })
     console.log('Message posted!')
