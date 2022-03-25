@@ -37,7 +37,7 @@ async function respondToMessage(event) {
         case ':Alice:':
           await web.chat.postMessage({
             channel: event.channel,
-            text: `Hello <${event.user}>! What can I help you today ?`
+            text: `Hello <@${event.user}>! What can I help you today ?`
           })
           //console.log('Message posted!')
           break
