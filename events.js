@@ -10,11 +10,19 @@ const subjects = require('./interaction/menu.json')
 function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
+  slackEvents.on('app_mention', (event) => {
+    //console.log(JSON.parse(JSON.stringify(event)))
+    console.log(`Received an mention event from user ${event.user} in channel ${event.channel}`)
+    if (!event.subtype && !event.bot_id) {
+      respondToMention(event.channel, bot_trigger)
+    }
+  })
+
   slackEvents.on('message', (event) => {
     //console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
-      respondToEvent(event.channel)
+      respondToMessage(event.channel, bot_trigger)
     }
   })
 
@@ -24,13 +32,32 @@ function listenForEvents(app) {
   })
 }
 
-async function respondToEvent(channelId) {
+async function respondToMessage(channelId, bot_trigger) {
   try {
-    await web.chat.postMessage({
-      channel: channelId,
-      text: ' ',
-      attachments: [subjects]
-    })
+    switch(bot_trigger) {
+        case ':Alice:':
+          await web.chat.postMessage({
+            channel: channelId,
+            text: ' '
+          })
+          break
+        default: // no default as we don't want the app to respond all messages in the channel
+          break
+    }
+
+    console.log('Message posted!')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function respondToMention(channelId) {
+  try {
+      await web.chat.postMessage({
+        channel: channelId,
+        text: ' ',
+        attachments: [subjects]
+      })
     console.log('Message posted!')
   } catch (error) {
     console.log(error)
@@ -38,4 +65,5 @@ async function respondToEvent(channelId) {
 }
 
 module.exports.listenForEvents = listenForEvents
-module.exports.respondToEvent = respondToEvent
+module.exports.respondToMessage = respondToMessage
+module.exports.respondToMention = respondToMention
