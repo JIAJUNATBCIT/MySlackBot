@@ -11,10 +11,10 @@ function listenForEvents(app) {
   app.use('/events', slackEvents.requestListener())
 
   slackEvents.on('app_mention', (event) => {
-    //console.log(JSON.parse(JSON.stringify(event)))
+    console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an mention event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
-      respondToMention(event.channel, bot_trigger)
+      respondToMention(event.channel)
     }
   })
 
@@ -22,7 +22,7 @@ function listenForEvents(app) {
     //console.log(JSON.parse(JSON.stringify(event)))
     console.log(`Received an message event from user ${event.user} in channel ${event.channel}`)
     if (!event.subtype && !event.bot_id) {
-      respondToMessage(event.channel, bot_trigger)
+      respondToMessage(event.channel, event.text)
     }
   })
 
