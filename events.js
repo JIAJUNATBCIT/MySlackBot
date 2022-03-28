@@ -34,7 +34,7 @@ function listenForEvents(app) {
 async function respondToMessage(event) {
   try {
     switch(event.text) {
-        case ':Alice:':
+        case ':alice:':
           await web.chat.postMessage({
             channel: event.channel,
             text: `Hello <@${event.user}>! What can I help you today ?`
