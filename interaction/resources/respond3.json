@@ -3,7 +3,7 @@
       "type": "section",
       "text": {
           "type": "mrkdwn",
-          "text": "Click on login https://partners.salesforce.com/pdx/s/?language=en_US\n1.  Click on Login with Salesforce\n2. Click Use Custom Domain\n3. Type in gscloudsolutions and click continue\n4. Login with google"
+          "text": "Click on login https://partners.salesforce.com/pdx/s/?language=en_US\n1. Click on Login with Salesforce\n2. Click Use Custom Domain\n3. Type in gscloudsolutions and click continue\n4. Login with google"
       }
     }
   ]
