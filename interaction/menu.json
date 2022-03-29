@@ -11,7 +11,7 @@
         "type": "select",
         "options": [
           {
-            "text": "1. Recordings of the camp pro surf sessions",
+            "text": "1. Recordings of camp prosurf sessions",
             "value": "q1"
           },
           {
@@ -19,11 +19,11 @@
             "value": "q2"
           },
           {
-            "text": "3. Log into partner community?",
+            "text": "3. Log into partner community",
             "value": "q3"
           },
           {
-            "text": "4. Certificates and skills tracker?",
+            "text": "4. Certificates and skills tracker",
             "value": "q4"
           },
           {
@@ -31,7 +31,7 @@
             "value": "q5"
           },
           {
-            "text": "6. Link to CultureAmp Onboarding Survey",
+            "text": "6. Onboarding - CultureAmp Onboarding Survey",
             "value": "q6"
           }
         ]
