@@ -53,7 +53,7 @@ async function respondToMention(event) {
   try {
     await web.chat.postMessage({
       channel: event.channel,
-      text: `Hello <@${event.user}>! I am Alice's virtual assistant, as you may know, Alice is on maternity leave till April.30, here're some questions that I may assist you with`,
+      text: `Hello <@${event.user}>! I am Alice's virtual assistant, as you may know, Alice is on maternity leave till April.30, here're some topics that I may assist you with`,
       attachments: [subjects]
     })
     //console.log('Message posted!')
