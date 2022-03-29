@@ -11,12 +11,28 @@
         "type": "select",
         "options": [
           {
-            "text": "Q1: Reply me with plain text",
+            "text": "Where can I find the recordings of the camp pro surf sessions?",
             "value": "q1"
           },
           {
-            "text": "Q2: Reply me with a link",
+            "text": "How can I request a certification voucher?",
             "value": "q2"
+          },
+          {
+            "text": "How do I log into the partner community?",
+            "value": "q3"
+          },
+          {
+            "text": "Where can I find the certificates and skills tracker?",
+            "value": "q4"
+          },
+          {
+            "text": "Should I just create a new account using my gscloudsolutions email if I want to use Microsoft office?",
+            "value": "q5"
+          },
+          {
+            "text": "In the Onboarding Tasks there is a 'Complete CultureAmp Onboarding Survey'. There is no link though so I am wondering where to find the survey?",
+            "value": "q6"
           }
         ]
       }

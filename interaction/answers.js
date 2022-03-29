@@ -3,6 +3,10 @@ const slackSigningSecret = process.env.SLACK_SIGNING_SECRET
 const slackInteractions = createMessageAdapter(slackSigningSecret)
 const respond_1 = require('./resources/respond1.json')
 const respond_2 = require('./resources/respond2.json')
+const respond_3 = require('./resources/respond3.json')
+const respond_4 = require('./resources/respond4.json')
+const respond_5 = require('./resources/respond5.json')
+const respond_6 = require('./resources/respond6.json')
 
 module.exports.listenForInteractions = function (app) {
   app.use('/interactions', slackInteractions.requestListener())
@@ -18,27 +22,44 @@ function respondToSelectDropdown(payload, respond) {
   if (payload.callback_id == 'menu') {
     switch (selectedOption) {
         case 'q1':
-            respondToQ1withPlainText(respond)
-            break
+          respond({
+            blocks: respond_1,
+            replace_original: true
+          })
+          break
         case 'q2':
-            respondToQ2withAttachment(respond)
-            break
+          respond({
+            blocks: respond_2,
+            replace_original: true
+          })
+          break
+        case 'q3':
+          respond({
+            blocks: respond_3,
+            replace_original: true
+          })
+          break
+        case 'q4':
+          respond({
+            blocks: respond_4,
+            replace_original: true
+          })
+          break
+        case 'q5':
+          respond({
+            blocks: respond_5,
+            replace_original: true
+          })
+          break
+        case 'q6':
+          respond({
+            blocks: respond_6,
+            replace_original: true
+          })
+          break
     }
   }
   // Return a replacement message
   return { text: 'Processing...' }
 }
 
-function respondToQ1withPlainText(respond) {
-    respond({
-        blocks: respond_1,
-        replace_original: true
-    })
-}
-
-function respondToQ2withAttachment(respond) {
-    respond({
-        blocks: respond_2,
-        replace_original: true
-    })
-}
